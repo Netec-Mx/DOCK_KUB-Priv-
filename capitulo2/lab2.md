@@ -61,7 +61,6 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 - **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**.
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para retornar a la raíz de los laboratorios.
-  {: .lab-note .info .compact}
 
   ![micint](./img/1.png)
 
@@ -84,7 +83,6 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 - **Paso 9.** Confirma la estructura del archivo y directorio creados; luego, ejecuta el siguiente comando.
 
   > **Nota.** Organizar cada práctica en carpetas separadas facilita la gestión de ejemplos y evita confusiones.
-  {: .lab-note .info .compact}
 
   ```bash
   ls -la -R
@@ -92,9 +90,6 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 
   ![micint](./img/3.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[0] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -107,13 +102,10 @@ Ejecutar un contenedor simple (hello-world) para validar la instalación de Dock
 - **Paso 10.** Ejecuta el siguiente comando para ejecutar el contenedor.
 
   > **Importante.** Aunque no importa la ruta donde lo ejecutes, deberías de estar en el directorio **lab2-dockerops**.
-  {: .lab-note .important .compact}
 
   > **Nota.** La salida debe mostrar un mensaje de bienvenida indicando que la instalación de Docker funciona correctamente.
-  {: .lab-note .info .compact}
 
   > **Nota.** El contenedor `hello-world` es la forma más simple de validar que Docker puede ejecutar imágenes.
-  {: .lab-note .info .compact}
 
   ```bash
   docker run hello-world
@@ -129,9 +121,6 @@ Ejecutar un contenedor simple (hello-world) para validar la instalación de Dock
 
   ![micint](./img/7.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[1] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -179,9 +168,6 @@ Aprender a correr un contenedor de Linux en modo interactivo.
 
   ![micint](./img/8.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[2] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -218,7 +204,6 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 - **Paso 19.** Ve los detalles de un contenedor, **copia el ID del contenedor Ubuntu en ejecución, el valor de la primera columna del comando anterior y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
 
   > **Nota.** El comando tiene una salida muy extensa, la imagen es solo representativa.
-  {: .lab-note .info .compact}
 
   ```bash
   docker inspect <ID_CONTENEDOR>
@@ -229,10 +214,8 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 - **Paso 20.** Ve los logs de un contenedor, **sustituye el ID del contenedor Ubuntu en ejecución y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
 
   > **Nota.** El contenedor no mostrará logs, ya que eso depende de si se generan o de que las aplicaciones los muestren.
-  {: .lab-note .info .compact}
 
   > **Importante.** En este caso, es un contenedor sencillo.
-  {: .lab-note .important .compact}
 
   ```bash
   docker logs <ID_CONTENEDOR>
@@ -243,10 +226,8 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 - **Paso 21.** Ve las estadísticas de uso en tiempo real.
 
   > **Nota.** Toma unos minutos para analizar la información de las estadísticas.
-  {: .lab-note .info .compact}
 
   > **Importante.** Cuando hayas terminado, ejecuta `CTRL + c` para salir de las estadísticas.
-  {: .lab-note .important .compact}
 
   ```bash
   docker stats
@@ -254,9 +235,6 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 
   ![micint](./img/14.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[3] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -295,7 +273,6 @@ Aprender a controlar el ciclo de vida de los contenedores.
 - **Paso 25.** Ya detenido, escribe los siguientes comandos. **Recuerda sustituir el ID del contenedor Ubuntu.**
 
   > **Nota.** Primero, **visualiza** los contenedores detenidos. Luego, **selecciona** los ID del contenedor a eliminar.
-  {: .lab-note .info .compact}
 
   ```bash
   docker ps -a
@@ -310,7 +287,6 @@ Aprender a controlar el ciclo de vida de los contenedores.
 - **Paso 26.** Para validar que ya no exista el contenedor eliminado, escribe el siguiente comando.
 
   > **Nota.** Si el contenedor sigue apareciendo, repite el comando del paso anterior. **Solo debe de quedar la imagen de `Minikube`**
-  {: .lab-note .info .compact}
 
   ```bash
   docker ps -a
@@ -318,9 +294,6 @@ Aprender a controlar el ciclo de vida de los contenedores.
 
   ![micint](./img/20.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[4] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -341,7 +314,6 @@ Listar, buscar, descargar y eliminar imágenes Docker para gestionar eficienteme
 - **Paso 28.** Busca imágenes en Docker Hub.  
 
   > **Nota.** La búsqueda de imágenes puede ser muy larga, aparecerán todos los que han contribuido o repositorios públicos.
-  {: .lab-note .info .compact}
 
   ```bash
   docker search alpine
@@ -352,7 +324,6 @@ Listar, buscar, descargar y eliminar imágenes Docker para gestionar eficienteme
 - **Paso 29.** Descarga una imagen específica.  
 
   > **Nota.** La imagen siempre se acompaña de la etiqueta `:latest`, pero también puede ser una etiqueta personalizada.
-  {: .lab-note .info .compact}
 
   ```bash
   docker pull alpine:latest
@@ -384,9 +355,6 @@ Listar, buscar, descargar y eliminar imágenes Docker para gestionar eficienteme
 
   ![micint](./img/26.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[5] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -399,7 +367,6 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
 - **Paso 33.** Crea un contenedor con nombre personalizado.  
 
   > **Nota.** La etiqueta **`--name`** define el nombre necesario. `-p` define la relación puerto **host:container**.
-  {: .lab-note .info .compact}
 
   ```bash
   docker run -d -p 8080:80 --name mi_nginx nginx
@@ -418,7 +385,6 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
 - **Paso 35.** Inspecciona los recursos del contenedor.  
 
   > **Nota.** Este comando se utiliza para mostrar los procesos en ejecución de un contenedor específico.
-  {: .lab-note .info .compact}
 
   ```bash
   docker top mi_nginx
@@ -429,10 +395,8 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
 - **Paso 36.** Elimina todos los contenedores detenidos. Cuando aparezca la pregunta, escribe **N**. El contenedor se eliminará manualmente.
 
   > **Nota.** Este comando es útil para liberar espacio en disco ocupado por contenedores que ya no se están ejecutando y no están destinados a reiniciarse.
-  {: .lab-note .info .compact}
 
   > **Importante.** Se debe tener mucho cuidado al usar este comando.
-  {: .lab-note .important .compact}
 
   ```bash
   docker stop mi_nginx
@@ -452,10 +416,8 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
   - Todas las redes no utilizadas por al menos un contenedor.
   - Todas las imágenes colgantes (capas de imágenes que ya no están etiquetadas ni asociadas a ningún contenedor).
   - La caché de compilación.
-  {: .lab-note .info .compact}
 
   > **Importante.** Se debe tener mucho cuidado al usar este comando.
-  {: .lab-note .important .compact}
 
   ```bash
   docker system prune
@@ -472,9 +434,6 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
 
   ![micint](./img/32.png) 
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[6] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -487,7 +446,6 @@ Documentar los comandos esenciales de Docker en un archivo **README.md** para co
 - **Paso 39.** Ahora abre el archivo **README.md**.
 
   > **Nota.** El comando `code` se ejecuta en la raíz del directorio **lab2-dockerops**
-  {: .lab-note .info .compact}
 
   ```bash
   code README.md
@@ -520,7 +478,3 @@ Documentar los comandos esenciales de Docker en un archivo **README.md** para co
   | `docker container prune` | Elimina los contenedores detenidos. |
   | `docker system prune` | Limpia los recursos no utilizados. |
   ```
-
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[7] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}

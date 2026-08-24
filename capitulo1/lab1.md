@@ -58,7 +58,6 @@ Configurar la estructura de carpetas y archivos del proyecto para mantener una b
 - **Paso 5.** Verifica que **Docker** esté instalado.
   
   > **Nota.** Copia y pega el siguiente comando en la terminal. **La versión puede variar.**
-  {: .lab-note .info .compact}
   
   ```bash
   docker --version
@@ -80,7 +79,6 @@ Configurar la estructura de carpetas y archivos del proyecto para mantener una b
 - **Paso 7.** Crea la estructura base del directorio del curso en el **Escritorio** del equipo asignado.
 
   > **Importante.** Si es necesario, ajusta manualmente las rutas en la terminal para crear la estructura de directorios.
-  {: .lab-note .important .compact}
 
   - Entra al directorio **Desktop**.
   - Crea un directorio llamado `dockerlabs`.
@@ -107,7 +105,6 @@ Configurar la estructura de carpetas y archivos del proyecto para mantener una b
 - **Paso 9.** Abre el directorio del proyecto en **VS Code**.
 
   > **Nota.** Da clic en el icono como se muestra en la imagen.
-  {: .lab-note .info .compact}
   ![micint](./img/8.png)
 
 - **Paso 10.** Clic en **Open Folder**.  
@@ -116,15 +113,11 @@ Configurar la estructura de carpetas y archivos del proyecto para mantener una b
 - **Paso 11.** Navega al directorio **dockerlabs** (en el Escritorio) y da clic en **Select Folder**.
 
   > **Nota.** Si aparece la ventana emergente, selecciona **Yes, I trust the authors**.
-  {: .lab-note .info .compact}
   ![micint](./img/10.png)
 
 - **Paso 12.** Verás cargado tu directorio para comenzar a trabajar.  
   ![micint](./img/11.png)
 
-{% assign results = site.data["task-results"][page.slug].results %}
-{% capture r1 %}{{ results[0] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -137,7 +130,6 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
 - **Paso 13.** Asegúrate de estar dentro de la carpeta **backend**.
 
   > **Nota.** Abre la **Terminal** desde la esquina superior derecha y navega al directorio desde la terminal.
-  {: .lab-note .info .compact}
 
   ```bash
   cd lab1-acontactos/backend
@@ -147,7 +139,6 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
 - **Paso 14.** Inicializa un proyecto de **Node.js** en la carpeta `backend` e instala **Express**.
 
   > **Nota.** Verifica que el directorio actual sea **backend**.
-  {: .lab-note .info .compact} 
 
   ```bash
   npm init -y
@@ -165,7 +156,6 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
 - **Paso 16.** Agrega el siguiente contenido al archivo **`server.js`**.
 
   > **Nota.** Puedes copiar y pegar. **Express** permite crear API REST de forma rápida y sencilla, ideal para microservicios ligeros.
-  {: .lab-note .info .compact}
 
   - **Servidor Express** ejecutándose en el puerto **3000**.  
   - **Frontend estático** servido desde la carpeta `../frontend`.  
@@ -242,7 +232,6 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
 - **Paso 17.** Valida la ejecución del servidor. Ejecuta el siguiente comando en la terminal dentro del directorio **backend**.
 
   > **Nota.** **Acepta** los permisos si aparece una ventana emergente.
-  {: .lab-note .info .compact}
 
   ```bash
   node server.js
@@ -272,9 +261,6 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
 
 - **Paso 22.** Regresa a la terminal donde se ejecutó **node server.js** y detén el proceso con `CTRL + C`.
 
-{% assign results = site.data["task-results"][page.slug].results %}
-{% capture r1 %}{{ results[1] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -287,7 +273,6 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
 - **Paso 23.** En la carpeta `frontend`, crea los archivos base y abre `index.html`:
 
   > **Nota.** Si estás en **backend**, sube un nivel antes de entrar a **frontend**.
-  {: .lab-note .info .compact}
 
   ```bash
   cd ../frontend
@@ -298,7 +283,6 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
 - **Paso 24.** Copia y pega el siguiente código **HTML** dentro de `index.html`.
 
   > **Nota.** El **frontend** se comunica con el **backend** usando **fetch**, simulando el consumo de una API REST.
-  {: .lab-note .info .compact}
 
   - **Título**: "Agenda de Contactos".  
   - **Formulario** para agregar o editar contactos (nombre, teléfono, botones de acción).  
@@ -445,7 +429,6 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
   - **Borrado**: `borrarContacto()` confirma y hace `DELETE`, luego recarga la lista.
   - **Reset UI**: `resetForm()` limpia inputs y restaura botones (**Agregar** / oculta **Cancelar**).
   - **Estado en memoria**: reutiliza `contactos` cargados para ubicar el registro a editar.
-  {: .lab-note .info .compact}
 
   ```js
   const form = document.getElementById('form');
@@ -558,9 +541,6 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
   cargarContactos();
   ```
 
-{% assign results = site.data["task-results"][page.slug].results %}
-{% capture r1 %}{{ results[2] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -573,7 +553,6 @@ Contenerizar la aplicación en una imagen **Docker**.
 - **Paso 29.** Crea el archivo **Dockerfile** en el directorio **lab1-acontactos**.
 
   > **Nota.** Si te encuentras en **frontend**, sube un nivel antes de crear el archivo. Ajusta las rutas si es necesario.
-  {: .lab-note .info .compact}
 
   ```bash
   cd ..
@@ -612,7 +591,6 @@ Contenerizar la aplicación en una imagen **Docker**.
 - **Paso 31.** Construye la imagen **Docker**.
 
   > **Nota.** El comando se ejecuta en el directorio raíz **lab1-acontactos**. La salida puede ser extensa.
-  {: .lab-note .info .compact}
 
   ```bash
   docker build -t agenda-contactos .
@@ -622,7 +600,6 @@ Contenerizar la aplicación en una imagen **Docker**.
 - **Paso 32.** Verifica la imagen creada.
 
   > **Nota.** Puedes ignorar otras imágenes, se usarán en laboratorios posteriores.
-  {: .lab-note .info .compact}
 
   ```bash
   docker images
@@ -632,7 +609,6 @@ Contenerizar la aplicación en una imagen **Docker**.
 - **Paso 33.** Ejecuta el contenedor a partir de la imagen.
 
   > **Nota.** Si aparece una ventana emergente de permisos, **permite** la ejecución.
-  {: .lab-note .info .compact}
 
   ```bash
   docker run --rm -d -p 3000:3000 --name agenda agenda-contactos
@@ -681,7 +657,3 @@ Contenerizar la aplicación en una imagen **Docker**.
   ```bash
   docker stop agenda
   ```
-
-{% assign results = site.data["task-results"][page.slug].results %}
-{% capture r1 %}{{ results[3] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}

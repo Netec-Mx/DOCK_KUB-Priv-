@@ -55,7 +55,6 @@ Crear la estructura de carpetas con backend y frontend.
 - **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para retornar a la raíz de laboratorios.
-  {: .lab-note .info .compact}
 
   ![micint](./img/1.png)
 
@@ -69,9 +68,6 @@ Crear la estructura de carpetas con backend y frontend.
 
   ![micint](./img/2.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[0] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -86,7 +82,6 @@ Implementar una API REST en Node.js. Se reutilizará el backend creado en la Pr�
   > **Importante**
     - El comando se ejecuta desde adentro de la carpeta **lab3-dockermultistage**.
     - En caso de que no estés dentro de la carpeta **lab3...**, ajusta las rutas.
-  {: .lab-note .important .compact}
 
 
   ```bash
@@ -96,7 +91,6 @@ Implementar una API REST en Node.js. Se reutilizará el backend creado en la Pr�
 - **Paso 9.** Ahora, escribe el siguiente comando para validar que se haya copiado correctamente la carpeta **backend**.
 
   > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VS Code.
-  {: .lab-note .info .compact}
 
   ```bash
   ls -la
@@ -104,9 +98,6 @@ Implementar una API REST en Node.js. Se reutilizará el backend creado en la Pr�
 
   ![micint](./img/3.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[1] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -121,7 +112,6 @@ Reutilizar el directorio **frontend** que tiene el sitio web estático.
   > **Importante**
     - El comando se ejecuta desde adentro de la carpeta **lab3-dockermultistage**.
     - En caso de que no estés dentro de la carpeta **lab3...** ajusta las rutas.
-  {: .lab-note .important .compact}
 
   ```bash
   cp -r ../lab1-acontactos/frontend/ .
@@ -130,7 +120,6 @@ Reutilizar el directorio **frontend** que tiene el sitio web estático.
 - **Paso 11.** Ahora, escribe el siguiente comando para validar que se haya copiado correctamente la carpeta **frontend**.
 
   > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VS Code.
-  {: .lab-note .info .compact}
 
   ```bash
   ls
@@ -138,9 +127,6 @@ Reutilizar el directorio **frontend** que tiene el sitio web estático.
 
   ![micint](./img/4.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[2] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -153,7 +139,6 @@ Crear un Dockerfile simple y analizar el tamaño.
 - **Paso 12.** Crea el archivo **Dockerfile** dentro del directorio **lab3-dockermultistage.**
 
   > **Nota.** El comando se ejecuta desde la carpeta **lab3...**
-  {: .lab-note .info .compact}
 
   ```bash
   touch Dockerfile
@@ -165,7 +150,6 @@ Crear un Dockerfile simple y analizar el tamaño.
 - **Paso 13.** Agrega el siguiente código al archivo **Dockerfile**.
 
   > **Nota.** Este Dockerfile crea una imagen sin Multi-Stage.
-  {: .lab-note .info .compact}
 
   ```dockerfile
   FROM node:20-alpine
@@ -181,7 +165,6 @@ Crear un Dockerfile simple y analizar el tamaño.
 - **Paso 14.** Compila el proyecto de docker. Escribe el siguiente comando dentro de la terminal.
 
   > **Nota.** El comando se ejecuta desde la carpeta **lab3...**
-  {: .lab-note .info .compact}
 
   ```bash
   docker build -t contactos-tradicional .
@@ -190,7 +173,6 @@ Crear un Dockerfile simple y analizar el tamaño.
 - **Paso 15.** Ahora, valida el tamaño de la imagen creada después de la compilación.
 
   > **Nota.** Aproximadamente, el tamaño será de `207MB`, aunque puede diferir.
-  {: .lab-note .info .compact}
 
   ```bash
   docker images contactos-tradicional
@@ -201,11 +183,7 @@ Crear un Dockerfile simple y analizar el tamaño.
 - **Paso 16.** Si es necesario, anota el número del tamaño de la imagen.
 
   > **Nota.** Esta es la forma tradicional, pero genera imágenes más grandes dependiendo de cómo esté estructurada la aplicación.
-  {: .lab-note .info .compact}
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[3] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -220,7 +198,6 @@ Optimizar la construcción usando **Multi-Stage**.
   > **Nota**
     - El nombre **opt** hace referencia a **Optimización** para la compilación del Multi-Stage.
     - Se crea dentro del mismo directorio **lab3...**.
-  {: .lab-note .info .compact}
 
   ```bash
   touch Dockerfile.opt
@@ -230,7 +207,6 @@ Optimizar la construcción usando **Multi-Stage**.
 - **Paso 18.** Ahora, agrega el siguiente código a ese nuevo archivo **Dockerfile.opt**.
 
   > **Nota.** El contenido es muy parecido al ejemplo anterior, pero internamente se mejora el proceso reduciendo las capas.
-  {: .lab-note .info .compact}
 
   ```dockerfile
   # Etapa 1: build
@@ -252,7 +228,6 @@ Optimizar la construcción usando **Multi-Stage**.
 - **Paso 19.** Ahora construye la imagen, escribiendo el siguiente comando.
 
   > **Nota.** Quizás, alcances a notar que compila un poco más rápido, todo depende de cuánta información tenga tu proyecto.
-  {: .lab-note .info .compact}
 
   ```bash
   docker build -f Dockerfile.opt -t contactos-opt .
@@ -268,9 +243,6 @@ Optimizar la construcción usando **Multi-Stage**.
 
 - **Paso 21.** Si es necesario, anota el número del tamaño de la imagen.
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[4] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -285,7 +257,6 @@ Verificar la diferencia de tamaños de las imágenes.
   > **Importante**
     - El comando se ejecuta dentro de la terminal **GitBash**.
     - Puede estar en cualquier directorio, pero lo ideal es que esté en **lab3...**
-  {: .lab-note .important .compact}
 
   ```bash
   docker images | grep contactos-
@@ -295,9 +266,6 @@ Verificar la diferencia de tamaños de las imágenes.
 
 - **Paso 23.** Puedes observar que la imagen **opt** es ligeramente más pequeña, recuerda que depende de cuánta información tenga tu proyecto.
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[5] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -343,7 +311,6 @@ Crear un archivo .dockerignore para excluir archivos innecesarios y mejorar el t
 - **Paso 28.** Ahora, valida ambos tamaños y compara el resultado.
 
   > **Nota.** Como puedes observar, se hizo una reducción relativa a la cantidad de archivos de la aplicación.
-  {: .lab-note .info .compact}
 
   ```bash
   docker images | grep contactos-
@@ -351,9 +318,6 @@ Crear un archivo .dockerignore para excluir archivos innecesarios y mejorar el t
 
   ![micint](./img/11.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[6] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -367,7 +331,6 @@ Crear un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más
 - **Paso 29.** Crea **Dockerfile.slim** para copiar únicamente lo necesario.
 
   > **Nota.** El comando se ejecuta dentro del directorio **lab3...**
-  {: .lab-note .info .compact}
 
   ```bash
   touch Dockerfile.slim
@@ -401,7 +364,6 @@ Crear un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más
 - **Paso 32.** Escribe el siguiente comando para observar el resultado.
 
   > **Nota.** Tanto la versión **opt** como la **slim** usan **Multi-Stage**,pero **slim** es mucho más minimalista, ya que la propiedad **--from=deps** copia solo lo que se necesita.
-  {: .lab-note .info .compact}
 
   ```bash
   docker images | grep contactos-
@@ -409,9 +371,6 @@ Crear un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más
 
   ![micint](./img/12.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[7] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -432,13 +391,8 @@ Eliminar las imágenes creadas para mantener limpio el ambiente.
 - **Paso 34.** Verifica que ya no aparezca ninguna imagen **contactos-...**
 
   > **Nota.** En caso de que todavía exista alguna, repite el paso anterior.
-  {: .lab-note .info .compact}
 
   ```bash
   docker images
   ```
   ![micint](./img/14.png)
-
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[8] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
