@@ -65,14 +65,12 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
-  {: .lab-note .info .compact}
 
   ![micint](./img/1.png)
 
 - **Paso 6.** Crea el directorio para trabajar en la **práctica**.
 
   > **Nota.** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
-  {: .lab-note .info .compact}
 
   ```bash
   mkdir lab9-k8sobjetos && cd lab9-k8sobjetos
@@ -81,7 +79,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio.
 
   > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
-  {: .lab-note .info .compact}
 
   ![micint](./img/2.png)
 
@@ -90,7 +87,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
   > **Nota.**  
   - `k8s/` agrupa todos los manifiestos.  
   - `app/` contiene el código e imagen. 
-  {: .lab-note .info .compact}
 
   ```text
   lab9-k8sobjetos/
@@ -111,7 +107,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 9.** Ahora, crea la carpeta **app/** y sus archivos vacíos.
 
   > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab9-k8sobjetos**.
-  {: .lab-note .info .compact}
 
   ```bash
   mkdir -p app && touch app/package.json app/server.js app/Dockerfile
@@ -120,7 +115,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 10.** Muy bien. Continúa la creación del directorio **k8s/** con los manifiestos vacíos.
 
   > **Nota.**  El comando se ejecuta desde la raíz de la carpeta **lab9-k8sobjetos**.
-  {: .lab-note .info .compact}
 
   ```bash
   mkdir -p k8s && touch k8s/configmap.yaml k8s/secret.yaml k8s/deployment.yaml k8s/service.yaml k8s/job-init.yaml k8s/cronjob-health.yaml
@@ -129,7 +123,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 11.** Crea el último archivo del proyecto **.dockerignore**.
 
   > **Nota.**  El comando se ejecuta desde la raíz de la carpeta **lab9-k8sobjetos**.
-  {: .lab-note .info .compact}
 
   ```bash
   touch .dockerignore
@@ -138,7 +131,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias.
 
   > **Nota.** Evita copiar artefactos innecesarios hacia la imagen, manteniéndola ligera.
-  {: .lab-note .info .compact}
 
   ```gitignore
   # evita copiar node_modules del host (causa del ELF inválido)
@@ -157,7 +149,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 - **Paso 13.** Valida la creación de la estructura de tu proyecto. Escribe el siguiente comando.
 
   > **Nota.** También puedes validarlo en el explorador de archivos de VS Code.
-  {: .lab-note .info .compact}
 
   ```bash
   ls -la -R
@@ -165,9 +156,6 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 
   ![micint](./img/3.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[0] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -180,7 +168,6 @@ Crear una app express con tres endpoints: `/` (mensaje con configuración), `/co
 - **Paso 14.** Abre el archivo `app/package.json` y agrega las siguientes dependencias.
 
   > **Nota.** Dependencia mínima para servir HTTP.
-  {: .lab-note .info .compact}
 
   ```json
   {
@@ -197,7 +184,6 @@ Crear una app express con tres endpoints: `/` (mensaje con configuración), `/co
 - **Paso 15.** Dentro de `app/server.js`, agrega el código de ejemplo.
 
   > **Nota.** La app lee un **archivo** de configuración para mostrar cómo montar ConfigMaps como volumen.
-  {: .lab-note .info .compact}
 
   ```javascript
   const fs = require('fs');
@@ -237,9 +223,6 @@ Crear una app express con tres endpoints: `/` (mensaje con configuración), `/co
   });
   ```
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[1] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -252,7 +235,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
 - **Paso 16.** Abre el archivo `app/Dockerfile` para definir las instrucciones que compilarán la imagen.
 
   > **Nota.** Multi-Stage pequeño para evitar reinstalar dependencias dos veces.
-  {: .lab-note .info .compact}
 
   ```dockerfile
   FROM node:20-alpine AS deps
@@ -277,7 +259,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
 - **Paso 18.** Ahora, regresa a la terminal de **VS Code** y escribe el siguiente comando para autenticar la terminal a **Docker Hub**.
 
   > **Nota.** Sigue los pasos de la terminal para autenticarte.
-  {: .lab-note .info .compact}
 
   ```bash
   docker login
@@ -289,7 +270,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
   - El comando se ejecuta dentro del directorio **lab9-k8sobjetos/**.
   - El **docker build...** se ejecuta desde **app/**. 
   - Ajusta las rutas si es necesario.
-  {: .lab-note .info .compact}
 
   ```bash
   cd app
@@ -303,7 +283,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
   > **Notas**
   - Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, **puede ser el mismo que usaste en la práctica anterior**.
   - El comando no dará salida a menos que haya un error.
-  {: .lab-note .info .compact}
 
   ```bash
   docker tag cfg-secrets-demo TU_USUARIO/TU_REPOSITORIO:cfg-secrets-demo
@@ -314,7 +293,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
 - **Paso 21.** Si todo sale bien, el siguiente comando subirá la imagen al repositorio remoto.
 
   > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior.
-  {: .lab-note .info .compact}
 
   ```bash
   docker push TU_USUARIO/TU_REPOSITORIO:cfg-secrets-demo
@@ -322,9 +300,6 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
 
   ![micint](./img/6.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[2] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -337,7 +312,6 @@ Crear un **ConfigMap** con `config.json` (montado como archivo) y un **Secret** 
 - **Paso 22.** Dentro del archivo `k8s/configmap.yaml`, agrega la siguiente referencia del archivo **config.json**.
 
   > **Nota.** El `|` permite incluir contenido multilínea.
-  {: .lab-note .info .compact}
 
   ```yaml
   apiVersion: v1
@@ -357,7 +331,6 @@ Crear un **ConfigMap** con `config.json` (montado como archivo) y un **Secret** 
 - **Paso 23.** Abre el archivo `k8s/secret.yaml` (valores en texto plano y K8s los codifica en base64) y agrega el siguiente código.
 
   > **Nota.** La propiedad `stringData` simplifica escribir sin base64; el API server lo convierte a `data` (base64).
-  {: .lab-note .info .compact}
 
   ```yaml
   apiVersion: v1
@@ -372,9 +345,7 @@ Crear un **ConfigMap** con `config.json` (montado como archivo) y un **Secret** 
 - **Paso 24.** Ahora, aplica los manifiestos **ConfigMap y Secret**.
 
   > **NOTA.** El comando **`cd ..`** te regresará un nivel de directorio para que puedas aplicar los manifiestos.
-  {: .lab-note .info .compact}
   > **IMPORTANTE:** Recuerda encender tu **Minikube** con el comando **`minikube start`**
-  {: .lab-note .important .compact}
 
   ```bash
   cd ..
@@ -402,9 +373,6 @@ Crear un **ConfigMap** con `config.json` (montado como archivo) y un **Secret** 
 
   ![micint](./img/9.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[3] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -420,7 +388,6 @@ Crear un **Deployment** con dos réplicas que monte el ConfigMap como **archivo*
   - Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior.
   - El cambio que debes realizar está en la **línea 19**, aproximadamente.
   - Montamos **solo** `config.json` en `/config`; usamos Secret vía env.
-  {: .lab-note .info .compact}
 
 
   ```yaml
@@ -507,7 +474,6 @@ Crear un **Deployment** con dos réplicas que monte el ConfigMap como **archivo*
   > **Nota.**
   - Verifica que el archivo exista y la variable de entorno esté presente.
   - Guarda el ID de un pod en la variable **POD**.
-  {: .lab-note .info .compact}
 
   ```bash
   POD=$(kubectl get pods -l app=cfg-secrets -o jsonpath='{.items[0].metadata.name}')
@@ -529,9 +495,6 @@ Crear un **Deployment** con dos réplicas que monte el ConfigMap como **archivo*
 
   ![micint](./img/13.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[4] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -544,7 +507,6 @@ Crear un **Service NodePort** para exponer la app desde el host hacia el clúste
 - **Paso 32.** Abre el archivo `k8s/service.yaml` y agrega el código para exponer la aplicación mediante este service.
 
   > **Nota.** **NodePort** asigna un puerto alto del nodo (Minikube) para acceso externo.
-  {: .lab-note .info .compact}
 
   ```yaml
   apiVersion: v1
@@ -576,15 +538,11 @@ Crear un **Service NodePort** para exponer la app desde el host hacia el clúste
 - **Paso 35.** Usa la URL localhost con el puerto dinámico y pruébala en el navegador Google Chrome.
 
   > **Nota.** Existosamente, obtuviste el ConfigMap con las etiquetas.
-  {: .lab-note .info .compact}
 
   ![micint](./img/14.png)
 
 - **Paso 36.** En la terminal que ocupa el proceso **Minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[5] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -597,7 +555,6 @@ Crear un **Job** que ejecute una vez una verificación de salud llamando a `/hea
 - **Paso 37.** Abre el archivo `k8s/job-init.yaml` y agrega el siguiente ejemplo de tarea única de ejecución.
 
   > **Nota.** Dentro del clúster, el **DNS** del servicio es `cfg-secrets-svc` (ClusterIP).
-  {: .lab-note .info .compact}
 
   ```yaml
   apiVersion: batch/v1
@@ -624,7 +581,6 @@ Crear un **Job** que ejecute una vez una verificación de salud llamando a `/hea
 - **Paso 39.** Verifica que se haya creado correctamente.
 
   > **Nota.** Si la primera ejecución marca **COMPLETITIONS 0/0** espera unos segundos y vuelve a probar. Debe salir **1/1**.
-  {: .lab-note .info .compact}
 
   ```bash
   kubectl get jobs
@@ -641,9 +597,6 @@ Crear un **Job** que ejecute una vez una verificación de salud llamando a `/hea
 
   ![micint](./img/16.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[6] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -656,7 +609,6 @@ Crear un **CronJob** que cada minuto consulte `/config` y registre el tamaño de
 - **Paso 41.** Abre el archivo `k8s/cronjob-health.yaml` y agrega la configuración del CronJob.
 
   > **Nota.** El CronJob usa la **DNS interna** para alcanzar el Service.
-  {: .lab-note .info .compact}
 
   ```yaml
   apiVersion: batch/v1
@@ -691,7 +643,6 @@ Crear un **CronJob** que cada minuto consulte `/config` y registre el tamaño de
 - **Paso 43.** Verifica la creación correcta del objeto.
 
   > **Nota.** Espera **~1 min** y consulta los jobs o pods generados. 
-  {: .lab-note .info .compact}
 
   ```bash
   kubectl get cronjobs
@@ -702,7 +653,6 @@ Crear un **CronJob** que cada minuto consulte `/config` y registre el tamaño de
 - **Paso 44.** También puedes usar el siguiente comando que mantiene la verificación activa, sin la necesidad de reejecutar el comando.
 
   > **Nota.** Para salir del **watch**, ejecuta `CTRL + c`.
-  {: .lab-note .info .compact}
 
   ```bash
   kubectl get jobs --watch
@@ -720,9 +670,6 @@ Crear un **CronJob** que cada minuto consulte `/config` y registre el tamaño de
 
   ![micint](./img/19.png)
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[7] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -735,7 +682,6 @@ Modificar el ConfigMap y forzar un **rolling restart** del Deployment para que l
 - **Paso 46.** Edita el archivo `k8s/configmap.yaml` y sustituye el siguiente código.
 
   > **Nota.** Sustituye todo el bloque de la **línea 8 a la línea 10**. Cuida mucho la identación, YAML es muy sensible a los espacios.
-  {: .lab-note .info .compact}
 
   ```yaml
       {
@@ -749,7 +695,6 @@ Modificar el ConfigMap y forzar un **rolling restart** del Deployment para que l
 - **Paso 47.** Aplica la nueva configuración en el manifiesto y reinicia el deployment (***rolling***).
 
   > **Nota.** Sin ***restart***, los pods pueden no leer cambios inmediatamente.
-  {: .lab-note .info .compact}
 
   ```bash
   kubectl apply -f k8s/configmap.yaml
@@ -770,15 +715,11 @@ Modificar el ConfigMap y forzar un **rolling restart** del Deployment para que l
   > **Nota.**
   - Exitosamente, obtienes el ConfigMap con las etiquetas.
   - Ahora, observa que viene el cambio **V2** y **false**.
-  {: .lab-note .info .compact}
 
   ![micint](./img/22.png)
 
 - **Paso 50.** En la terminal que ocupa el proceso **Minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[8] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
 
 ---
 
@@ -799,14 +740,9 @@ Siempre es importante detener y eliminar recursos creados que no se usarán.
 - **Paso 52.** Verifica que esté limpio.
 
   > **Nota.** La propiedad `service/kubernetes` no se borra, es parte del clúster.
-  {: .lab-note .info .compact}
 
   ```bash
   kubectl get all
   ```
 
   ![micint](./img/24.png)
-
-{% assign results = site.data.task-results[page.slug].results %}
-{% capture r1 %}{{ results[9] }}{% endcapture %}
-{% include task-result.html title="Tarea finalizada" content=r1 %}
